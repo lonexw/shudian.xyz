@@ -1,4 +1,4 @@
-use axum::{response::IntoResponse, Router, routing::get};
+use axum::{response::IntoResponse, response::Json, Router, routing::get};
 use clap::Parser;
 use std::net::{IpAddr, Ipv6Addr, SocketAddr};
 use std::str::FromStr;
@@ -56,5 +56,5 @@ async fn main() {
 }
 
 async fn hello() -> impl IntoResponse {
-    "hello from server!"
+    Json(serde_json::json!([{ "id": "1", "name": "Beixinqiao" }, { "id": "2", "name": "Xidan" }]))
 }

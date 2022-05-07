@@ -1,5 +1,5 @@
 mod home;
-mod shop;
+mod shop_detail;
 
 pub use home::Home;
-pub use shop::ShopDetail;
+pub use shop_detail::ShopDetail;

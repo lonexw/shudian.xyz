@@ -1,10 +1,11 @@
+
 ## shudian.xyz
 
 书店指南：聚合书店信息的单页面网站应用。
 
 ### 核心技术栈
 
-- Rust and WebAssembly（wasm）, no code of Javascript.
+- Rust(1.56.0+) 、Cargo and WebAssembly（wasm）, no code of Javascript.
 - [Trunk](https://trunkrs.dev/) is a WASM web application bundler for Rust.
 - [Yew](https://yew.rs/) is a modern Rust framework for creating multi-threaded front-end web apps using WebAssembly.
 - [axum](https://docs.rs/axum/latest/axum/) web application framework.
@@ -17,7 +18,7 @@ WASM 浏览器支持情况：https://caniuse.com/wasm
 
 2. 安装必要的开发工具：
 ```
-# The Rust wasm32 target.
+# Install WebAssembly target
 rustup target add wasm32-unknown-unknown
 
 # WASM web application bundler for Rust
@@ -44,6 +45,22 @@ $ cargo install cargo-watch
 $ server/target/release/server --static-dir ./dist --port 8080
 ```
 
+### 数据库存储
+
+EdgeDB 的选型及使用
+
+### Assets 外部资源
+
+```html
+<link data-trunk rel="scss" href="assets/app.scss" />
+```
+
+- Trunk Asset 编译打包: https://trunkrs.dev/assets/
+- Dart Sass: https://sass-lang.com/dart-sass
+
+### 待办事项
+
+[ ] api 请求的封装 📦 与数据库的 proxy
 
 #### 参考资料
 

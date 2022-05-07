@@ -10,6 +10,8 @@ axum = "0.5.4"
 axum-extra = { version = "0.3.0", features = ["spa"] }
 clap = { version = "3.1.17", features = ["derive"] }
 log = "0.4.17"
+serde = "1.0.137"
+serde_json = "1.0.81"
 tokio = { version = "1.18.1", features = ["full"] }
 tower = "0.4.12"
 tower-http = { version = "0.3.2", features = ["full"] }

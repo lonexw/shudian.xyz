@@ -1,4 +1,6 @@
 
+#[derive(Debug, Clone, PartialEq, serde::Deserialize)]
 pub struct Shop {
-	name: String,
+	pub id: String,
+	pub name: String,
 }

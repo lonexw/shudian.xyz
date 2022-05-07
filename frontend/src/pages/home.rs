@@ -3,21 +3,22 @@ use wasm_bindgen_futures::spawn_local;
 use yew::prelude::*;
 
 // use crate::api;
-// use crate::types::*;
-// use crate::components::ShopItem;
+use crate::types::Shop;
+use crate::components::ShopList;
+use crate::pages::ShopDetail;
 
 #[function_component(Home)]
 pub fn home() -> Html {
-    let data = use_state(|| None);
+    let shops = use_state(|| None);
 
-    // Request `/api/hello` once
+    // Request `/api/shops` once
     {
-        let data = data.clone();
+        let shops = shops.clone();
         use_effect(move || {
-            if data.is_none() {
+            if shops.is_none() {
                 spawn_local(async move {
                     let resp = Request::get("/api/hello").send().await.unwrap();
-                    let result = {
+                    let result: Result<Vec<Shop>, String> = {
                         if !resp.ok() {
                             Err(format!(
                                 "Error fetching data {} ({})",
@@ -25,10 +26,10 @@ pub fn home() -> Html {
                                 resp.status_text()
                             ))
                         } else {
-                            resp.text().await.map_err(|err| err.to_string())
+                            resp.json().await.map_err(|err| err.to_string())
                         }
                     };
-                    data.set(Some(result));
+                    shops.set(Some(result))
                 });
             }
 
@@ -36,15 +37,32 @@ pub fn home() -> Html {
         });
     }
 
-    match data.as_ref() {
+    match shops.as_ref() {
         None => {
             html! {
                 <div>{"No server response"}</div>
             }
         }
         Some(Ok(data)) => {
+            let selected_shop = use_state(|| None);
+            
+            let on_shop_select = {
+                let selected_shop = selected_shop.clone();
+                Callback::from(move |shop: Shop| {
+                    selected_shop.set(Some(shop))
+                })
+            };
+            let detail = selected_shop.as_ref().map(|shop| html! {
+                <ShopDetail shop={shop.clone()} />
+            });
+
             html! {
-                <div>{"Got server response: "}{data}</div>
+                <div>
+                    <ShopList shops={(*data).clone()} on_click={on_shop_select.clone()} />
+                    <div>
+                        { for detail }
+                    </div>
+                </div>
             }
         }
         Some(Err(err)) => {
