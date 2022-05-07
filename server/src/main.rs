@@ -55,6 +55,6 @@ async fn main() {
         .expect("Unable to start server.");
 }
 
-async  fn hello() -> impl IntoResponse {
+async fn hello() -> impl IntoResponse {
     "hello from server!"
 }
