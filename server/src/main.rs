@@ -56,5 +56,5 @@ async fn main() {
 }
 
 async fn hello() -> impl IntoResponse {
-    Json(serde_json::json!([{ "id": "1", "name": "Beixinqiao" }, { "id": "2", "name": "Xidan" }]))
+    Json(serde_json::json!([{ "id": "1", "name": "做書书咖酒馆 北新桥", "cover_image": "https://s1.ax1x.com/2022/05/08/O13V3j.jpg", "address": "北京市东城区后永康胡同16号" }, { "id": "2", "name": "做书西单更新场", "cover_image": "https://s1.ax1x.com/2022/05/08/O12HqP.jpg", "address": "北京市西城区西单北大街180号(西单地铁站A西北口步行290米)" }]))
 }

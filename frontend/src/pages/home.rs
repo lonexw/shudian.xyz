@@ -61,11 +61,14 @@ pub fn home() -> Html {
                 <div class="main-content">
                     <div class="shop-list">
                         <Navbar />
-                        <ShopList shops={(*data).clone()} on_click={on_shop_select.clone()} />
+                        <div class="container">
+                            <ShopList shops={(*data).clone()} on_click={on_shop_select.clone()} />
+
+                            <p class="guide-to-pc">{"电脑访问：https://shudian.xyz "}</p>
+                        </div>
                     </div>
-                    <div class="shop-detail">
-                        { for detail }
-                    </div>
+                    
+                    { for detail }
                 </div>
             }
         }

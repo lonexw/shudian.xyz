@@ -7,12 +7,10 @@ pub fn navbar() -> Html {
 			<div class="nav-header">
 				<img class="logo" src="logo.png" alt="书店指南" />
 				<div class="city-select">
-					{"北京"}
+					<span>{"北京"}</span>
 				</div>
 			</div>
-			<div class="nav-map">
-				{"Map is here"}
-			</div>
+			<div class="nav-map"></div>
 		</div>
 
 	}

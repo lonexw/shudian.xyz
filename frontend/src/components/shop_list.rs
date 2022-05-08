@@ -1,7 +1,7 @@
 use yew::prelude::*;
 
 use crate::types::Shop;
-// use crate::components::ShopItem;
+use crate::components::ShopItem;
 
 #[derive(Clone, Properties, PartialEq)]
 pub struct ShopListProps {
@@ -23,7 +23,9 @@ pub fn shop_list(ShopListProps { shops, on_click } : &ShopListProps) -> Html {
         };
 
         html! {
-            <p onclick={on_shop_select}>{format!("Shop Detail: {}: {}", shop.id, shop.name)}</p>
+            <div onclick={on_shop_select}>
+                <ShopItem shop={shop.clone()} />
+            </div>
         }
     }).collect()
 }

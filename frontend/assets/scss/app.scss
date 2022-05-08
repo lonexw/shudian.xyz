@@ -1,12 +1,14 @@
 @use 'base';
 @use 'shop_list';
 @use 'shop_detail';
+@use 'shop_card';
 
 body {
 	font: 100% base.$font-stack;
 	overflow: hidden;
 	margin: 0;
 	padding: 0;
+	background-color: #f5f5f5;
 }
 
 .main-content {

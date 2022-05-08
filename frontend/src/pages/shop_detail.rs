@@ -1,5 +1,7 @@
 use yew::prelude::*;
+
 use crate::types::Shop;
+use crate::components::ShopItem;
 
 #[derive(Clone, Properties, PartialEq)]
 pub struct ShopDetailProps {
@@ -9,6 +11,18 @@ pub struct ShopDetailProps {
 #[function_component(ShopDetail)]
 pub fn shop_detail(ShopDetailProps { shop } : &ShopDetailProps) -> Html {
 	html! {
-		<p>{format!("{}: {}", shop.id, shop.name)}</p>
+		<div class="shop-detail">
+			<div class="shop-detail-header">
+				<ShopItem shop={shop.clone()} />
+			</div>
+			<div class="shop-detail-container">
+				<div class="shop-nav-tabs">
+					<div class="tab">{"推荐书单"}</div>
+				</div>
+				<div class="shop-detail-content">
+					
+				</div>
+			</div>
+		</div>
 	}
 }
