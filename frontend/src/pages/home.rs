@@ -2,7 +2,7 @@ use gloo_net::http::Request;
 use wasm_bindgen_futures::spawn_local;
 use yew::prelude::*;
 
-// use crate::api;
+use crate::api::get_shops;
 use crate::types::Shop;
 use crate::components::Navbar;
 use crate::components::ShopList;
@@ -18,18 +18,7 @@ pub fn home() -> Html {
         use_effect(move || {
             if shops.is_none() {
                 spawn_local(async move {
-                    let resp = Request::get("/api/hello").send().await.unwrap();
-                    let result: Result<Vec<Shop>, String> = {
-                        if !resp.ok() {
-                            Err(format!(
-                                "Error fetching data {} ({})",
-                                resp.status(),
-                                resp.status_text()
-                            ))
-                        } else {
-                            resp.json().await.map_err(|err| err.to_string())
-                        }
-                    };
+                    let result = get_shops().await;
                     shops.set(Some(result))
                 });
             }
@@ -44,7 +33,7 @@ pub fn home() -> Html {
                 <div>{"No server response"}</div>
             }
         }
-        Some(Ok(data)) => {
+        Some(Ok(response)) => {
             let selected_shop = use_state(|| None);
             
             let on_shop_select = {
@@ -62,7 +51,7 @@ pub fn home() -> Html {
                     <div class="shop-list">
                         <Navbar />
                         <div class="container">
-                            <ShopList shops={(*data).clone()} on_click={on_shop_select.clone()} />
+                            <ShopList shops={response.data.clone()} on_click={on_shop_select.clone()} />
 
                             <p class="guide-to-pc">{"电脑访问：https://shudian.xyz "}</p>
                         </div>

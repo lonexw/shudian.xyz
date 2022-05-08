@@ -1,9 +1,11 @@
-use axum::{response::IntoResponse, response::Json, Router, routing::get};
+use axum::{Router, routing::get};
 use clap::Parser;
 use std::net::{IpAddr, Ipv6Addr, SocketAddr};
 use std::str::FromStr;
 use tower::{ServiceBuilder};
 use tower_http::trace::TraceLayer;
+
+mod query;
 
 // Setup the command line interface with clap.
 #[derive(Parser, Debug)]
@@ -38,7 +40,7 @@ async fn main() {
     tracing_subscriber::fmt::init();
 
     let app = Router::new()
-        .route("/api/hello",  get(hello))
+        .route("/api/get_shops", get(query::get_shops))
         .merge(axum_extra::routing::SpaRouter::new("/assets", opt.static_dir))
         .layer(ServiceBuilder::new().layer(TraceLayer::new_for_http()));
 
@@ -53,25 +55,4 @@ async fn main() {
         .serve(app.into_make_service())
         .await
         .expect("Unable to start server.");
-}
-
-async fn hello() -> impl IntoResponse {
-    Json(serde_json::json!([
-        { "id": "1", 
-            "name": "做書书咖酒馆 北新桥", 
-            "cover_image": "https://s1.ax1x.com/2022/05/08/O13V3j.jpg", 
-            "address": "北京市东城区后永康胡同16号",
-            "open_time": "11:00-20:00",
-            "telephone": "010-64176626",
-            "tags": "网红、二手书、阅读空间",
-            "desc": "PAGEONE的特色是原版艺术设计类书籍、英文原版、港台版还有原版杂志、搭卖的高端文具。"
-        }, 
-        { "id": "2", 
-            "name": "做书西单更新场", 
-            "cover_image": "https://s1.ax1x.com/2022/05/08/O12HqP.jpg", 
-            "address": "北京市西城区西单北大街180号(西单地铁站A西北口步行290米)",
-            "open_time": "11:00-20:00",
-            "telephone": "010-64176626",
-            "tags": "网红、二手书、阅读空间",
-            "desc": "PAGEONE的特色是原版艺术设计类书籍、英文原版、港台版还有原版杂志、搭卖的高端文具。" }]))
 }
