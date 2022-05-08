@@ -1,0 +1,33 @@
+@use 'base';
+
+.shop-list {
+	background: #eee;
+	min-width: 320px;
+
+	.navbar {
+		.nav-header {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			padding: 10px;
+			color: white;
+			font-size: 14px;
+			font-weight: bold;
+			background-color: base.$primary-color;
+
+			.logo {
+				height: 28px;
+			}
+
+			.city-select {
+				line-height: 28px;
+			}
+		}
+
+		.nav-map {
+			height: 120px;
+			text-align: center;
+			background-color: #f5f5f5;
+		}
+	}
+}

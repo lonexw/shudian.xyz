@@ -1,0 +1,16 @@
+@use 'base';
+@use 'shop_list';
+@use 'shop_detail';
+
+body {
+	font: 100% base.$font-stack;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+}
+
+.main-content {
+	display: flex;
+	height: 100vh;
+}
+

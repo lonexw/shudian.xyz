@@ -4,6 +4,7 @@ use yew::prelude::*;
 
 // use crate::api;
 use crate::types::Shop;
+use crate::components::Navbar;
 use crate::components::ShopList;
 use crate::pages::ShopDetail;
 
@@ -57,9 +58,12 @@ pub fn home() -> Html {
             });
 
             html! {
-                <div>
-                    <ShopList shops={(*data).clone()} on_click={on_shop_select.clone()} />
-                    <div>
+                <div class="main-content">
+                    <div class="shop-list">
+                        <Navbar />
+                        <ShopList shops={(*data).clone()} on_click={on_shop_select.clone()} />
+                    </div>
+                    <div class="shop-detail">
                         { for detail }
                     </div>
                 </div>
