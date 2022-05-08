@@ -24,7 +24,7 @@ pub fn shop_list(ShopListProps { shops, on_click } : &ShopListProps) -> Html {
 
         html! {
             <div onclick={on_shop_select}>
-                <ShopItem shop={shop.clone()} />
+                <ShopItem shop={shop.clone()} show_more={false} />
             </div>
         }
     }).collect()

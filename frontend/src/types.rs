@@ -5,4 +5,8 @@ pub struct Shop {
 	pub name: String,
 	pub cover_image: String,
 	pub address: String,
+	pub open_time: String,
+	pub telephone: String,
+	pub tags: String,
+	pub desc: String,
 }
