@@ -72,8 +72,6 @@ https://github.com/edgedb/edgedb-docker
 
 ### 生产环境部署
 
-[ ] 生产环境的最佳实践，性能优化
-
 静态文件和可执行文件生成：
 - release 版本：**bash prod.sh**
 
