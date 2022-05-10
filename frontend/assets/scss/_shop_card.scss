@@ -1,7 +1,7 @@
 @use 'base';
 
 .shop-card {
-	width: 300px;
+	width: 100%;
 	height: 230px;
 	margin-bottom: 10px;
 	border-radius: 10px;
@@ -46,24 +46,23 @@
     			align-items: baseline;
 				justify-content: space-between;
 				width: 100%;
-
-				.shop-card-state {
-					color: base.$primary-color;
-					font-weight: normal;
-					font-size: 14px;
-					height: 20px;
-				    line-height: 20px;
-				    padding: 0 6px;
-				    border: 1px solid rgb(0, 47, 167);
-					border: 1px solid base.$primary-color;
-					border-radius: 3px;
-					margin-left: 10px;
-				}
 			}
 			
 			.shop-mark-button {
 				display: none;
 			}			
+		}
+
+		.shop-card-state {
+			color: base.$primary-color;
+			font-weight: normal;
+			font-size: 14px;
+			height: 20px;
+		    line-height: 20px;
+		    padding: 0 6px;
+		    border: 1px solid rgb(0, 47, 167);
+			border: 1px solid base.$primary-color;
+			border-radius: 3px;
 		}
 
 	}

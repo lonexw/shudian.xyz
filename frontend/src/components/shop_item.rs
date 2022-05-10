@@ -11,7 +11,7 @@ pub struct ShopItemProps {
 #[function_component(ShopItem)]
 pub fn shop_item(ShopItemProps { shop, show_more } : &ShopItemProps) -> Html {
 	html! {
-		<div class="shop-card">
+		<div class="shop-card" id={shop.id.clone()}>
 			if *show_more {
 	            <div class="shop-card-images">
 	                <img src={shop.cover_image.clone()} alt={shop.name.clone()} />
@@ -21,12 +21,13 @@ pub fn shop_item(ShopItemProps { shop, show_more } : &ShopItemProps) -> Html {
                 <p class="shop-card-name">
                 	<div class="shop-card-name-wrap">
                 		<span>{format!("{}", shop.name)}</span>
-                		<span class="shop-card-state">{"正常营业"}</span>
+                		<span>{"🌟"}</span>
                 	</div>
                 	<div class="shop-mark-button">
                 		<img src="https://s1.ax1x.com/2022/05/10/OYX2Zt.jpg" />
                 	</div>
                 </p>
+                <p><span class="shop-card-state">{"正常营业"}</span></p>
                 <p>{format!("🏷️ {}", shop.tags)}</p>
                 <p>{format!("地址: {}", shop.address)}</p>
                 if *show_more {

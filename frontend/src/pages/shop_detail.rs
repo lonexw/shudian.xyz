@@ -18,6 +18,9 @@ pub fn shop_detail(ShopDetailProps { shop } : &ShopDetailProps) -> Html {
 			<div class="shop-detail-container">
 				<div class="shop-nav-tabs">
 					<div class="tab">{"精选书单"}</div>
+					<div class="tab">{"打卡照片"}</div>
+					<div class="tab">{"成为会员"}</div>
+					<div class="tab">{"图书市集"}</div>
 				</div>
 				<div class="shop-detail-content">
 					<div class="tips">{"书店精选书单，即将开启"}</div>

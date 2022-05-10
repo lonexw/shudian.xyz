@@ -39,7 +39,7 @@ $padding-default: 10px;
   		scrollbar-width: none;  /* Firefox */
 
   		.shop-card  {
-  			height: 90px;
+  			height: 110px;
   		}
 	}
 
@@ -59,4 +59,10 @@ $padding-default: 10px;
 	font-size: 12px;
 	color: #444;
 	margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+	.shop-list {
+		width: 100vw;
+	}
 }
