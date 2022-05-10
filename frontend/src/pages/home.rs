@@ -34,7 +34,6 @@ pub fn home() -> Html {
         }
         Some(Ok(response)) => {
             let selected_shop = use_state(|| None);
-            
             let on_shop_select = {
                 let selected_shop = selected_shop.clone();
                 Callback::from(move |shop: Shop| {
@@ -44,6 +43,12 @@ pub fn home() -> Html {
             let detail = selected_shop.as_ref().map(|shop| html! {
                 <ShopDetail shop={shop.clone()} />
             });
+
+            let close_shop_detail = {
+                Callback::from(move |_| {
+                    selected_shop.set(None)
+                })
+            };
 
             html! {
                 <div class="main-content">
@@ -55,8 +60,12 @@ pub fn home() -> Html {
                             <p class="guide-to-pc">{"电脑访问：https://shudian.xyz "}</p>
                         </div>
                     </div>
+
+                    if detail.is_some() {
+                        <button class="shop-detail-close" onclick={close_shop_detail}>{"关闭"}</button>
+                        { for detail }
+                    }
                     
-                    { for detail }
                 </div>
             }
         }

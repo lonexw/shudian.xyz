@@ -12,7 +12,7 @@ pub struct ShopItemProps {
 pub fn shop_item(ShopItemProps { shop, show_more } : &ShopItemProps) -> Html {
 	html! {
 		<div class="shop-card" id={shop.id.clone()}>
-			if *show_more {
+			if false {
 	            <div class="shop-card-images">
 	                <img src={shop.cover_image.clone()} alt={shop.name.clone()} />
 	            </div>

@@ -15,11 +15,17 @@ pub fn shop_detail(ShopDetailProps { shop } : &ShopDetailProps) -> Html {
 			<div class="shop-detail-header">
 				<ShopItem shop={shop.clone()} show_more={true} />
 			</div>
+			<div class="shop-detail-images">
+				<img src={shop.cover_image.clone()} alt={shop.name.clone()} />
+				<img src={shop.cover_image.clone()} alt={shop.name.clone()} />
+				<img src={shop.cover_image.clone()} alt={shop.name.clone()} />
+				<img src={shop.cover_image.clone()} alt={shop.name.clone()} />
+				<img src={shop.cover_image.clone()} alt={shop.name.clone()} />
+				<img src={shop.cover_image.clone()} alt={shop.name.clone()} />
+			</div>
 			<div class="shop-detail-container">
 				<div class="shop-nav-tabs">
 					<div class="tab">{"精选书单"}</div>
-					<div class="tab">{"打卡照片"}</div>
-					<div class="tab">{"成为会员"}</div>
 					<div class="tab">{"图书市集"}</div>
 				</div>
 				<div class="shop-detail-content">

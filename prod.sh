@@ -5,7 +5,7 @@ IFS=$'\n\t'
 pushd frontend
 # note: when using SpaRouter this needs to be
 #   "trunk build --public-url /assets/"
-trunk build --public-url /assets/
+trunk build --public-url /
 popd
 
 pushd server
