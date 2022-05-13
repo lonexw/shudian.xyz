@@ -19,7 +19,7 @@ pub fn shop_item(ShopItemProps { shop, show_more } : &ShopItemProps) -> Html {
                 		// <span>{"🌟"}</span >
                 	</div>
                 </p>
-        		if shop.status != "Auditing" {
+        		if shop.status == "Auditing" {
         			<p><span class="shop-card-state info-wanring-text">{"核实中"}</span></p>
         		}
         		else 

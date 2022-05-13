@@ -50,7 +50,7 @@ pub async fn get_shops(city: String) -> Result<QueryResponse<Shop>, String> {
 }
 
 async fn query_edgedb(query: EdgedbQuery) -> Result<Response, String> {
-    let resp = Request::post("http://1.117.186.114:9000/db/edgedb/edgeql")
+    let resp = Request::post("https://edb.shudian.xyz/db/edgedb/edgeql")
         .json(&query)
         .unwrap()
         .send()

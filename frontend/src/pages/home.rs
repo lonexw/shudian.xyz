@@ -71,8 +71,7 @@ pub fn home() -> Html {
                         <Navbar on_changed={on_city_changed} />
                         <div class="container">
                             <ShopList shops={response.data.clone()} on_click={on_shop_select.clone()} />
-                            <p class="guide-to-pc">{"电脑访问：https://shudian.xyz | "}</p>
-                            <p class="guide-to-pc">{"🪧 京ICP备16050972号-19"}</p>
+                            <p class="guide-to-pc">{"🪧 电脑访问：https://shudian.xyz | 京ICP备16050972号-19"}</p>
                         </div>
                     </div>
 
