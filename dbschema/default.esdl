@@ -49,7 +49,7 @@ module default {
 
 	}
 
-	type PublisingHouse extending Shop {
+	type PublishingHouse extending Shop {
 
 	}
 

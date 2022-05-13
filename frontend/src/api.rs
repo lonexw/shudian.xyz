@@ -22,8 +22,23 @@ pub struct QueryResponse<T> {
     // error: QueryError,
 }
 
-pub async fn get_shops() -> Result<QueryResponse<Shop>, String> {
-    let query = "select Shop { id, name, cover_image, address, open_time, telephone, desc, tags }".to_string();
+pub async fn get_cities() -> Result<QueryResponse<String>, String> {
+    let query = "select (distinct (Location.city))".to_string();
+    let query = EdgedbQuery { query, variables: None };
+
+    query_edgedb(query)
+        .await
+        .unwrap()
+        .json()
+        .await
+        .map_err(|err| err.to_string())
+}
+
+pub async fn get_shops(city: String) -> Result<QueryResponse<Shop>, String> {
+    let query = format!("select Bookshop {{
+        id, name, address, status, operation_state, 
+        open_time, telephone, intro,
+        supporters: {{ nickname, avatar_url }} }} filter .location.city = '{}'", city);
     let query = EdgedbQuery { query, variables: None };
 
     query_edgedb(query)

@@ -23,11 +23,22 @@ $padding-default: 10px;
 
 			.city-select {
 				line-height: 28px;
+				cursor: pointer;
 			}
 		}
 
 		.nav-map {
-			text-align: center;
+			background: white;
+			padding: 10px;
+
+			.city-name {
+				margin-right: 16px;
+				cursor: pointer;
+			}
+
+			.city-name-selected {
+				border-bottom: 2px solid base.$primary-color;
+			}
 		}
 	}
 
@@ -40,6 +51,10 @@ $padding-default: 10px;
 
   		.shop-card  {
   			height: 110px;
+
+  			.shop-card-name-wrap p {
+				padding: 0;
+  			}
   		}
 	}
 
